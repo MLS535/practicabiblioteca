@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
@@ -51,9 +52,15 @@ public class Biblioteca {
 
     }
 
-    public static void mostrarLibroDisponible(){
+    public static void mostrarLibroDisponible(ArrayList<Libro> libroList){
+        ArrayList <Libro> librosdisponibles= new ArrayList<>();
 
-    }
+       /* for (int i = 0; i < libroList.size(); i++) {
+            if (libroList.get(i).getNumCopiasDisponibles() > 0) {
+
+            }*/
+        }
+
 
     @Override
     public String toString() {

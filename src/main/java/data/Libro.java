@@ -82,26 +82,82 @@ public class Libro {
         this.numCopiasDisponibles = numCopiasDisponibles;
     }
 
-    public static void agregarLibro(ArrayList<Libro> libros) {
-        Libro libro= new Libro();
-        Scanner pedir= new Scanner(System.in);
-        System.out.println("Por favor añade un titulo al libro");
-        String titulo = pedir.nextLine();
+
+    public static Libro agregarLibro() {
+        Libro libro = new Libro();
+        List<Libro> libroList = new ArrayList<>();
+        System.out.println("Introduce el ISBN:");
+        Scanner isbn1 = new Scanner(System.in);
+        String isbn = isbn1.nextLine();
+        libro.setIsbn(isbn);
+
+        System.out.println("Introduce el título:");
+        Scanner titulo1 = new Scanner(System.in);
+        String titulo = titulo1.nextLine();
         libro.setTitulo(titulo);
-        libros.add(libro);
-        System.out.println(libros);
+
+        System.out.println("Introduce el autor:");
+        Scanner autor1 = new Scanner(System.in);
+        String autor = autor1.nextLine();
+        libro.setAutor(autor);
+
+        System.out.println("Introduce el editorial:");
+        Scanner editorial1 = new Scanner(System.in);
+        String editorial = editorial1.nextLine();
+        libro.setEditorial(editorial);
+
+        System.out.println("Introduce numCopias:");
+        Scanner numCopias1 = new Scanner(System.in);
+        int numCopias = Integer.parseInt(numCopias1.nextLine());
+        libro.setNumCopias(numCopias);
+
+        System.out.println("Introduce numCopias disponibles:");
+        Scanner numCopiasDisponibles1 = new Scanner(System.in);
+        int numCopiasDisponibles = Integer.parseInt(numCopiasDisponibles1.nextLine());
+        libro.setNumCopiasDisponibles(numCopiasDisponibles);
+
+        libroList.add(libro);
+        return libro;
     }
 
-    public static void eliminarLibro() {
+//Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
+    public static void eliminarLibro(ArrayList<Libro> libroList) {
+        System.out.print("\n ISBN a buscar: ");
+        Scanner leer = new Scanner(System.in);
+        String isbn = leer.nextLine();
 
+        for (int contador = 0; contador < libroList.size(); contador++) {
+            if (libroList.get(contador).getIsbn().equals(isbn)) {
+                libroList.remove(contador);
+                System.out.print("\nLibro borrado.");
+            }
+        }
     }
 
-    public static void buscarIsbn() {
+//Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
+    public static void buscarIsbn(ArrayList<Libro> libroList) {
+        System.out.print("\n ISBN a buscar: ");
+        Scanner leer = new Scanner(System.in);
+        String isbn = leer.nextLine();
 
+        for (int contador = 0; contador < libroList.size(); contador++) {
+            if (libroList.get(contador).getIsbn().equals(isbn)) {
+                System.out.println("\n" + libroList.get(contador).getIsbn() + ", " + libroList.get(contador).getTitulo() + " y " + libroList.get(contador).getEditorial() + " editorial.");
+            }
+        }
     }
 
-    public static void buscarTitulo() {
+//Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
+    public static void buscarTitulo(ArrayList<Libro> libroList) {
+        System.out.print("\n Titulo a buscar: ");
+        Scanner leer = new Scanner(System.in);
+        String titulo = leer.nextLine();
 
+        for (int contador = 0; contador < libroList.size(); contador++) {
+            if (libroList.get(contador).getTitulo().equals(titulo)) {
+                System.out.println("\n" + libroList.get(contador).getIsbn() + ", " + libroList.get(contador).getTitulo() + " y " + libroList.get(contador).getEditorial() + " editorial.");
+            }
+        }
     }
 
     @Override
