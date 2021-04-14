@@ -1,6 +1,6 @@
 package data;
 
-public class Bibliotecario extends Persona {
+public class Persona extends Persona {
     private String puestoTrabajo;
     private String nif;
     private String password;

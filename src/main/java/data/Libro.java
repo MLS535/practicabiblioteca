@@ -82,7 +82,7 @@ public class Libro {
         this.numCopiasDisponibles = numCopiasDisponibles;
     }
 
-
+//limitar el isbn para que sea único
     public static Libro agregarLibro() {
         Libro libro = new Libro();
         List<Libro> libroList = new ArrayList<>();
@@ -125,25 +125,33 @@ public class Libro {
         System.out.print("\n ISBN a buscar: ");
         Scanner leer = new Scanner(System.in);
         String isbn = leer.nextLine();
-
+        int comprobante = 1;
         for (int contador = 0; contador < libroList.size(); contador++) {
             if (libroList.get(contador).getIsbn().equals(isbn)) {
                 libroList.remove(contador);
                 System.out.print("\nLibro borrado.");
+                comprobante = 0;
             }
+        }
+        if (comprobante == 1) {
+            System.out.println("No se encuentra el libro");
         }
     }
 
 //Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
     public static void buscarIsbn(ArrayList<Libro> libroList) {
+
         System.out.print("\n ISBN a buscar: ");
         Scanner leer = new Scanner(System.in);
         String isbn = leer.nextLine();
-
+        int comprobante = 1;
         for (int contador = 0; contador < libroList.size(); contador++) {
             if (libroList.get(contador).getIsbn().equals(isbn)) {
                 System.out.println("\n" + libroList.get(contador).getIsbn() + ", " + libroList.get(contador).getTitulo() + " y " + libroList.get(contador).getEditorial() + " editorial.");
             }
+        }
+        if (comprobante == 1) {
+            System.out.println("No se encuentra el libro");
         }
     }
 
@@ -152,11 +160,15 @@ public class Libro {
         System.out.print("\n Titulo a buscar: ");
         Scanner leer = new Scanner(System.in);
         String titulo = leer.nextLine();
-
+        int comprobante = 1;
         for (int contador = 0; contador < libroList.size(); contador++) {
             if (libroList.get(contador).getTitulo().equals(titulo)) {
                 System.out.println("\n" + libroList.get(contador).getIsbn() + ", " + libroList.get(contador).getTitulo() + " y " + libroList.get(contador).getEditorial() + " editorial.");
+                comprobante = 0;
             }
+        }
+        if (comprobante == 1) {
+            System.out.println("No se encuentra el libro");
         }
     }
 
