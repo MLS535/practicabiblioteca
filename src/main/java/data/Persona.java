@@ -56,6 +56,24 @@ public abstract class Persona {
         this.edad = edad;
     }
 
+    public Persona solicitarDatosPersona() {
+        Persona persona = new Bibliotecario();
+        return persona;
+    }
+/*
+    public void solicitarDatosPersona() {
+        Persona usuario= new Usuario();
+        Persona bibliotecario = new Bibliotecario();
+        List<Persona> personaList= new ArrayList<>();
+        System.out.println("Introduce el nombre");
+        Scanner nombre1 = new Scanner(System.in);
+        String nombre = nombre1.nextLine();
+        usuario.setNombre(nombre);
+        bibliotecario.setNombre(nombre);
+    }
+
+ */
+
     @Override
     public String toString() {
         return "Persona{" +

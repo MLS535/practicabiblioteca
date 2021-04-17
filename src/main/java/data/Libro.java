@@ -82,7 +82,19 @@ public class Libro {
         this.numCopiasDisponibles = numCopiasDisponibles;
     }
 
-//limitar el isbn para que sea único
+    //todo Son todos los libros incluidos los no disponibles o solo los disponibles?
+    public static void contadorLibros(ArrayList<Libro> libroList) {
+        ArrayList<Libro> librosdisponibles = new ArrayList<>();
+
+        for (int i = 0; i < libroList.size(); i++) {
+            if (libroList.get(i).getNumCopiasDisponibles() > 0) {
+                librosdisponibles.add(libroList.get(i));
+            }
+        }
+        System.out.println(librosdisponibles.size());
+    }
+
+    //todo limitar el isbn para que sea único
     public static Libro agregarLibro() {
         Libro libro = new Libro();
         List<Libro> libroList = new ArrayList<>();
@@ -106,7 +118,7 @@ public class Libro {
         String editorial = editorial1.nextLine();
         libro.setEditorial(editorial);
 
-        System.out.println("Introduce numCopias:");
+        System.out.println("Introduce numCopias ten en cuenta que nunca de ser menor de 1:");
         Scanner numCopias1 = new Scanner(System.in);
         int numCopias = Integer.parseInt(numCopias1.nextLine());
         libro.setNumCopias(numCopias);

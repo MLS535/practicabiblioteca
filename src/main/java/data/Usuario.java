@@ -1,6 +1,8 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Usuario extends Persona {
     private Integer telefono;
@@ -68,6 +70,55 @@ public class Usuario extends Persona {
 
     public void setListaReserva(List<Reserva> listaReserva) {
         this.listaReserva = listaReserva;
+    }
+
+    @Override
+    public Persona solicitarDatosPersona() {
+
+        Usuario usuario = new Usuario();
+        List<Persona> usuarioList = new ArrayList<>();
+        System.out.println("Introduce el Nombre:");
+        Scanner nombre1 = new Scanner(System.in);
+        String nombre = nombre1.nextLine();
+        usuario.setNombre(nombre);
+
+        System.out.println("Introduce el Primer Apellido:");
+        Scanner apellido1 = new Scanner(System.in);
+        String primerApellido = apellido1.nextLine();
+        usuario.setApellido1(primerApellido);
+
+        System.out.println("Introduce el Segundo Apellido:");
+        Scanner apellido2 = new Scanner(System.in);
+        String segundoApellido = apellido2.nextLine();
+        usuario.setApellido2(segundoApellido);
+
+        System.out.println("Introduce la edad:");
+        Scanner edad1 = new Scanner(System.in);
+        Integer edad = Integer.parseInt(edad1.nextLine());
+        usuario.setEdad(edad);
+
+        System.out.println("Introduce el teléfono:");
+        Scanner tel = new Scanner(System.in);
+        Integer telefono = Integer.parseInt(tel.nextLine());
+        usuario.setTelefono(telefono);
+
+        System.out.println("Introduce la dirección:");
+        Scanner direc = new Scanner(System.in);
+        String direccion = direc.nextLine();
+        usuario.setDireccion(direccion);
+
+        System.out.println("Introduce el código postal:");
+        Scanner cp = new Scanner(System.in);
+        Integer codigoPostal = Integer.parseInt(cp.nextLine());
+        usuario.setCodigoPostal(codigoPostal);
+
+        System.out.println("Introduce el correo electrónico");
+        Scanner email = new Scanner(System.in);
+        String correo = email.nextLine();
+        usuario.setDireccion(correo);
+
+        usuarioList.add(usuario);
+        return usuario;
     }
 
     @Override

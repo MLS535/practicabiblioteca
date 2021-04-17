@@ -1,7 +1,6 @@
 package aplicacion;
 
-import data.Biblioteca;
-import data.Libro;
+import data.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +48,9 @@ public class Menu {
             System.out.println(" 4. Buscar por Titulo");
             System.out.println(" 5. Eliminar Libro");
             System.out.println(" 6. VER TODOS LOS LIBROS DISPONIBLES");
+            System.out.println(" 7. Comprobar que solicitarDatosPersona es correcto");
             System.out.print("\n Para salir pulse 9 ");
-            System.out.print("\n Elija una opción (1-6): ");
+            System.out.print("\n Elija una opción (1-7): ");
 
             entrada = opcion.nextInt();
         } while (entrada > 10 || entrada < 1);
@@ -64,7 +64,9 @@ public class Menu {
         Menu Menu = new Menu();
 
         entrada = Menu.executeMainMenu();
+        Persona bibliotecario= new Bibliotecario();
         ArrayList<Libro> myList = new ArrayList<>();
+        ArrayList <Persona> personaArrayList=new ArrayList<>();
 
         while (entrada != 20) {
             switch (entrada) {
@@ -91,6 +93,12 @@ public class Menu {
                     break;
                 case 6:
                     Biblioteca.mostrarLibroDisponible(myList);
+                    entrada = Menu.executeMainMenu();
+                    break;
+
+                case 7:
+                    personaArrayList.add(bibliotecario.solicitarDatosPersona());
+                    System.out.println(personaArrayList);
                     entrada = Menu.executeMainMenu();
                     break;
                 default:

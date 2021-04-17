@@ -1,5 +1,9 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Bibliotecario extends Persona {
     private String puestoTrabajo;
     private String nif;
@@ -47,6 +51,48 @@ public class Bibliotecario extends Persona {
         this.password = password;
     }
 
+    @Override
+    public Persona solicitarDatosPersona() {
+        Bibliotecario bibliotecario= new Bibliotecario();
+        List<Persona> bibliotecarioList = new ArrayList<>();
+        System.out.println("Introduce el nombre");
+        Scanner nombre2 = new Scanner(System.in);
+        String nombre = nombre2.nextLine();
+        bibliotecario.setNombre(nombre);
+
+        System.out.println("Introduce el Primer Apellido:");
+        Scanner apellido1 = new Scanner(System.in);
+        String primerApellido = apellido1.nextLine();
+        bibliotecario.setApellido1(primerApellido);
+
+        System.out.println("Introduce el Segundo Apellido:");
+        Scanner apellido2 = new Scanner(System.in);
+        String segundoApellido = apellido2.nextLine();
+        bibliotecario.setApellido2(segundoApellido);
+
+        System.out.println("Introduce la edad:");
+        Scanner edad1 = new Scanner(System.in);
+        Integer edad = Integer.parseInt(edad1.nextLine());
+        bibliotecario.setEdad(edad);
+
+        System.out.println("Introduce el puesto de trabajo:");
+        Scanner pusT = new Scanner(System.in);
+        String puestoTrabajo = pusT.nextLine();
+        bibliotecario.setPuestoTrabajo(puestoTrabajo);
+
+        System.out.println("Introduce el NIF:");
+        Scanner nif1 = new Scanner(System.in);
+        String nif = nif1.nextLine();
+        bibliotecario.setNif(nif);
+
+        System.out.println("Introduce el Password:");
+        Scanner password1 = new Scanner(System.in);
+        String password = password1.nextLine();
+        bibliotecario.setPassword(password);
+
+        bibliotecarioList.add(bibliotecario);
+        return bibliotecario;
+    }
     @Override
     public String toString() {
         return "Bibliotecario{" +
