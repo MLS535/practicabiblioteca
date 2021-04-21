@@ -52,9 +52,9 @@ public class Bibliotecario extends Persona {
     }
 
     @Override
-    public Persona solicitarDatosPersona() {
+    public Bibliotecario solicitarDatosPersona() {
         Bibliotecario bibliotecario= new Bibliotecario();
-        List<Persona> bibliotecarioList = new ArrayList<>();
+        ArrayList<Persona> bibliotecarioList= new ArrayList<>();
         System.out.println("Introduce el nombre");
         Scanner nombre2 = new Scanner(System.in);
         String nombre = nombre2.nextLine();
@@ -93,6 +93,29 @@ public class Bibliotecario extends Persona {
         bibliotecarioList.add(bibliotecario);
         return bibliotecario;
     }
+
+    public static void accesoPassword(ArrayList<Persona> personaArrayList) {
+        System.out.print("\n Introduce tu contraseña: ");
+        Scanner leer = new Scanner(System.in);
+        String contrasena = leer.nextLine();
+        int comprobante = 1;
+        ArrayList<Bibliotecario> bibliotecarios = new ArrayList<>();
+
+        for (int i = 0; i < personaArrayList.size(); i++) {
+            bibliotecarios.add((Bibliotecario) personaArrayList.get(i));
+            }
+
+        for (int contador = 0; contador < bibliotecarios.size(); contador++) {
+            if (bibliotecarios.get(contador).getPassword().equals(contrasena)) {
+                System.out.println("\n" + bibliotecarios.get(contador).getPassword()+"Acceso correcto");
+                comprobante = 0;
+            }
+        }
+        if (comprobante == 1) {
+            System.out.println("No es correcto");
+        }
+    }
+
     @Override
     public String toString() {
         return "Bibliotecario{" +

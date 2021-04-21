@@ -57,7 +57,7 @@ public abstract class Persona {
     }
 
     public Persona solicitarDatosPersona() {
-        Persona persona = new Bibliotecario();
+        Persona persona = null;
         return persona;
     }
 /*
@@ -73,6 +73,7 @@ public abstract class Persona {
     }
 
  */
+
 
     @Override
     public String toString() {

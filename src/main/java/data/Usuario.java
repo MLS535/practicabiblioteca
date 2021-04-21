@@ -73,7 +73,7 @@ public class Usuario extends Persona {
     }
 
     @Override
-    public Persona solicitarDatosPersona() {
+    public Usuario solicitarDatosPersona() {
 
         Usuario usuario = new Usuario();
         List<Persona> usuarioList = new ArrayList<>();
@@ -115,7 +115,8 @@ public class Usuario extends Persona {
         System.out.println("Introduce el correo electrónico");
         Scanner email = new Scanner(System.in);
         String correo = email.nextLine();
-        usuario.setDireccion(correo);
+        usuario.setCorreoElectronico(correo);
+        //usuario.setListaReserva(null);
 
         usuarioList.add(usuario);
         return usuario;

@@ -54,6 +54,8 @@ public class Biblioteca {
 
     public static void mostrarTodosLibros(){
 
+            System.out.println(libroList.get(i).toString() + "\n");
+        }
     }
 
     public static void mostrarLibroDisponible(ArrayList<Libro> libroList) {
@@ -64,7 +66,10 @@ public class Biblioteca {
 
             }*/
         }
-        System.out.println(librosdisponibles);
+        for (int i = 0; i < librosdisponibles.size(); i++) {
+
+            System.out.println(librosdisponibles.get(i).toString() + "\n");
+        }
     }
    /* public static void nombrebiblio(String nombreBibi){
         Biblioteca biblioteca= new Biblioteca();
