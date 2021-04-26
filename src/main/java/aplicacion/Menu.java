@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
+
     /*public static void main(String[] args) {
 
         //String isbn, String titulo, String autor, String editorial, int numCopias, int numCopiasDisponibles
@@ -128,6 +129,7 @@ public class Menu {
                 case 8:
                     Bibliotecario.accesoPassword(personaArrayList);
                     entrada = Menu.executeMainMenu();
+                    Biblioteca biblioteca= new Biblioteca();
                     break;
                 default:
                     System.out.println("hasta lueguito");
