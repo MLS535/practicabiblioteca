@@ -1,7 +1,6 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Bibliotecario extends Persona {
@@ -54,7 +53,7 @@ public class Bibliotecario extends Persona {
     @Override
     public Bibliotecario solicitarDatosPersona() {
         Bibliotecario bibliotecario= new Bibliotecario();
-        ArrayList<Persona> bibliotecarioList= new ArrayList<>();
+        ArrayList<Bibliotecario> bibliotecarioList= new ArrayList<>();
         System.out.println("Introduce el nombre");
         Scanner nombre2 = new Scanner(System.in);
         String nombre = nombre2.nextLine();
@@ -99,15 +98,13 @@ public class Bibliotecario extends Persona {
         Scanner leer = new Scanner(System.in);
         String contrasena = leer.nextLine();
         int comprobante = 1;
-        ArrayList<Bibliotecario> bibliotecarios = new ArrayList<>();
+        //ArrayList<Bibliotecario> bibliotecarios = new ArrayList<>();
+       // Bibliotecario bibliotecario =new Bibliotecario();
 
-        for (int i = 0; i < personaArrayList.size(); i++) {
-            bibliotecarios.add((Bibliotecario) personaArrayList.get(i));
-            }
-
-        for (int contador = 0; contador < bibliotecarios.size(); contador++) {
-            if (bibliotecarios.get(contador).getPassword().equals(contrasena)) {
-                System.out.println("\n" + bibliotecarios.get(contador).getPassword()+"Acceso correcto");
+     //biblioteca.getPersonaList().get(i).equals(bibliotecario.getPassword())
+        for (int i = 0; i < Biblioteca.getBibliotecarioList().size(); i++) {
+            if (Biblioteca.getBibliotecarioList().equals(contrasena)) {
+                System.out.println("\n" +"Acceso correcto");
                 comprobante = 0;
             }
         }
@@ -115,6 +112,7 @@ public class Bibliotecario extends Persona {
             System.out.println("No es correcto");
         }
     }
+
 
     @Override
     public String toString() {

@@ -80,18 +80,19 @@ public class Menu {
         myList.add(new Libro("004a", "La casa de Bernarda Alba", "Lorca", "Lorca Editorial", 5, 0));
         myList.add(new Libro("005a", "100 años de soledad", "Garcia Marquez", "Editorial Garcia", 5, 5));
 
+        /*
         personaArrayList.add(new Bibliotecario("Ignacio", "Akrich", "Vazquez", 25, "Vicedirector", "43152327A", "12345678"));
         personaArrayList.add(new Bibliotecario("Maite", "Ladaria", "Sanchez", 25, "Directora", "43152327E", "12345678"));
-
+*/
         /**
          *TODO A TENER EN CUENTA QUE USUARIO TIENE UN ARRAYLIST
          * reservaArrayList.add(new Reserva(libro1, date));
          */
-
+/*
         personaArrayList.add(new Usuario("Paco", "Martinez", "Pedro", 55, 658490268, "Calle 13", 07003, "pacomartinez@gmail.com", reservaArrayList));
         personaArrayList.add(new Usuario("Pamela", "Mejia", "Fontseca", 20, 658490268, "Calle Blanquerna", 07777, "pamelamejia@gmail.com", reservaArrayList));
 
-
+*/
 
         while (entrada != 20) {
             switch (entrada) {
@@ -123,13 +124,12 @@ public class Menu {
 
                 case 7:
 
-                    personaArrayList.add(usuario.solicitarDatosPersona());
+                    personaArrayList.add(bibliotecario.solicitarDatosPersona());
                     System.out.println(personaArrayList);
                     entrada = Menu.executeMainMenu();
                 case 8:
-                    Bibliotecario.accesoPassword(personaArrayList);
+                    Bibliotecario.accesoPassword();
                     entrada = Menu.executeMainMenu();
-                    Biblioteca biblioteca= new Biblioteca();
                     break;
                 default:
                     System.out.println("hasta lueguito");
