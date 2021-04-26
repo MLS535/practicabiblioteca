@@ -52,7 +52,8 @@ public class Biblioteca {
         this.personaList = personaList;
     }
 
-    public static void mostrarTodosLibros(){
+    public static void mostrarTodosLibros(ArrayList<Libro> libroList) {
+        for (int i = 0; i < libroList.size(); i++) {
 
             System.out.println(libroList.get(i).toString() + "\n");
         }
@@ -61,10 +62,10 @@ public class Biblioteca {
     public static void mostrarLibroDisponible(ArrayList<Libro> libroList) {
         ArrayList<Libro> librosdisponibles = new ArrayList<>();
 
-       /* for (int i = 0; i < libroList.size(); i++) {
+        for (int i = 0; i < libroList.size(); i++) {
             if (libroList.get(i).getNumCopiasDisponibles() > 0) {
-
-            }*/
+                librosdisponibles.add(libroList.get(i));
+            }
         }
         for (int i = 0; i < librosdisponibles.size(); i++) {
 
