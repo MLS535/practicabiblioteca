@@ -1,5 +1,7 @@
 package data;
 
+import java.util.ArrayList;
+
 public abstract class Persona {
     private String nombre;
     private String apellido1;
@@ -56,10 +58,9 @@ public abstract class Persona {
         this.edad = edad;
     }
 
-    public Persona solicitarDatosPersona() {
-        Persona persona = null;
-        return persona;
-    }
+
+
+
 /*
     public void solicitarDatosPersona() {
         Persona usuario= new Usuario();
@@ -73,6 +74,11 @@ public abstract class Persona {
     }
 
  */
+
+
+    public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
+
+    }
 
 
     @Override

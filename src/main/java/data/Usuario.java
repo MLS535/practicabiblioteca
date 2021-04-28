@@ -73,7 +73,7 @@ public class Usuario extends Persona {
     }
 
     @Override
-    public Usuario solicitarDatosPersona() {
+    public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
 
         Usuario usuario = new Usuario();
         List<Persona> usuarioList = new ArrayList<>();
@@ -118,9 +118,37 @@ public class Usuario extends Persona {
         usuario.setCorreoElectronico(correo);
         //usuario.setListaReserva(null);
 
+        // personaArrayList.add(usuario);
         usuarioList.add(usuario);
-        return usuario;
+        usuarios.add(usuario);
+        arrayList.add(usuario);
+        System.out.println(usuario);
     }
+
+    /*
+    public static void accesoUsuario(ArrayList<Usuario> usuarioArrayList) {
+
+        System.out.print("\n Introduce tu telefono: ");
+        Scanner leer1 = new Scanner(System.in);
+        Integer telefono = Integer.parseInt(leer1.nextLine());
+        System.out.print("\n Introduce tu email: ");
+        Scanner leer = new Scanner(System.in);
+        String email = leer.nextLine();
+
+        int comprobante = 1;
+
+        for (int i = 0; i < usuarioArrayList.size(); i++) {
+            if (usuarioArrayList.get(i).getTelefono().equals(telefono) && usuarioArrayList.get(i).getCorreoElectronico().equals(email)) {
+                System.out.println("\n" + "Acceso correcto");
+                comprobante = 0;
+            }
+        }
+        if (comprobante == 1) {
+            System.out.println("No es correcto");
+        }
+
+    }
+*/
 
     @Override
     public String toString() {

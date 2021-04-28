@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Bibliotecario extends Persona {
@@ -47,13 +48,18 @@ public class Bibliotecario extends Persona {
     }
 
     public void setPassword(String password) {
+        if (password.length() < 8) {
+            System.out.println("La contraseña es incorrecta debes añadir más de 8 caracteres");
+            throw new IllegalArgumentException();
+        }
+
         this.password = password;
     }
 
     @Override
-    public Bibliotecario solicitarDatosPersona() {
-        Bibliotecario bibliotecario= new Bibliotecario();
-        ArrayList<Bibliotecario> bibliotecarioList= new ArrayList<>();
+    public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> personaArrayList) {
+        Biblioteca biblioteca = new Biblioteca();
+        Bibliotecario bibliotecario = new Bibliotecario();
         System.out.println("Introduce el nombre");
         Scanner nombre2 = new Scanner(System.in);
         String nombre = nombre2.nextLine();
@@ -93,7 +99,14 @@ public class Bibliotecario extends Persona {
         return bibliotecario;
     }
 
-    public static void accesoPassword(ArrayList<Persona> personaArrayList) {
+
+    public static void accesoBibliotecario(ArrayList<Bibliotecario> bibliotecarios) {
+    /* personas.add(new Bibliotecario("Ignacio", "Akrich", "Vazquez", 25, "Vicedirector", "43152327A", "12345678"));
+     personas.add(new Bibliotecario("Maite", "Ladaria", "Sanchez", 25, "Directora", "43152327E", "12345678"));
+        */
+        System.out.print("\n Introduce tu nif: ");
+        Scanner leer1 = new Scanner(System.in);
+        String nif = leer1.nextLine();
         System.out.print("\n Introduce tu contraseña: ");
         Scanner leer = new Scanner(System.in);
         String contrasena = leer.nextLine();
@@ -113,6 +126,54 @@ public class Bibliotecario extends Persona {
         }
     }
 
+    //todo falta averiguar por que la reserva aparece en todos los usuarios
+    public static void reservarLibro(ArrayList<Usuario> usuarios, ArrayList<Libro> libroArrayList, ArrayList<Reserva> reservaArrayList) {
+        //Usuario.accesoUsuario(usuarios);
+        System.out.print("\n Introduce tu telefono: ");
+        Scanner leer1 = new Scanner(System.in);
+        Integer telefono = Integer.parseInt(leer1.nextLine());
+        System.out.print("\n Introduce tu email: ");
+        Scanner leer = new Scanner(System.in);
+        String email = leer.nextLine();
+        int compro = 1;
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getTelefono().equals(telefono) && usuarios.get(i).getCorreoElectronico().equals(email)) {
+                System.out.println("\n" + "Acceso correcto");
+                Usuario usuario = new Usuario();
+                System.out.print("\n ISBN a buscar: ");
+                Scanner leer3 = new Scanner(System.in);
+                String isbn = leer3.nextLine();
+                int comprobante = 1;
+                Date fecha = new Date();
+                for (int contador = 0; contador < libroArrayList.size(); contador++) {
+                    if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > 0) {
+                        reservaArrayList.add(new Reserva(libroArrayList.get(contador), fecha));
+                        libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() - 1);
+
+                        comprobante = 0;
+                        System.out.println(libroArrayList);
+                        System.out.println(reservaArrayList);
+                    }
+                }
+                if (comprobante == 1) {
+                    System.out.println("No hay copias disponibles");
+                }
+            }
+        }
+        for (int j = 0; j < usuarios.size(); j++) {
+            if (usuarios.get(j).getTelefono().equals(telefono) && usuarios.get(j).getCorreoElectronico().equals(email)) {
+                usuarios.get(j).setListaReserva(reservaArrayList);
+                compro = 0;
+                System.out.println(usuarios);
+
+            }
+        }
+        if (compro == 1) {
+            System.out.println("No es correcto");
+
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -123,3 +184,4 @@ public class Bibliotecario extends Persona {
                 '}';
     }
 }
+
