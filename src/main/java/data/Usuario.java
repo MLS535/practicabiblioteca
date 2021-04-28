@@ -153,9 +153,9 @@ public class Usuario extends Persona {
     @Override
     public String toString() {
         return "Usuario{" +
-                "nombre=" + getNombre() +'\'' +
-                "apellido1=" + getApellido1() +'\'' +
-                "apellido2=" + getApellido2() +'\'' +
+                "nombre=" + getNombre() + '\'' +
+                "apellido1=" + getApellido1() + '\'' +
+                "apellido2=" + getApellido2() + '\'' +
                 "edad=" + getEdad() +
                 "telefono=" + telefono +
                 ", direccion='" + direccion + '\'' +

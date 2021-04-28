@@ -7,21 +7,44 @@ public class Biblioteca {
     private String nombreBiblioteca;
     private static List<Libro> libroList;
     private static List<Persona> personaList;
+    private static List<Bibliotecario> bibliotecarioList;
+    private static List<Usuario> usuarioList;
+
+    public static List<Bibliotecario> getBibliotecarioList() {
+        return bibliotecarioList;
+    }
+
+    public static void setBibliotecarioList(List<Bibliotecario> bibliotecarioList) {
+        Biblioteca.bibliotecarioList = bibliotecarioList;
+    }
+
+    public static List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public static void setUsuarioList(List<Usuario> usuarioList) {
+        Biblioteca.usuarioList = usuarioList;
+    }
 
     public Biblioteca() {
 
     }
 
-    public Biblioteca(String nombreBiblioteca, List<Libro> libroList, List<Persona> personaList) {
+    public Biblioteca(String nombreBiblioteca, List<Libro> libroList, List<Persona> personaList, List<Bibliotecario> bibliotecarioList, List<Usuario> usuarioList) {
         this.nombreBiblioteca = nombreBiblioteca;
         this.libroList = libroList;
         this.personaList = personaList;
+        this.bibliotecarioList = bibliotecarioList;
+        this.usuarioList = usuarioList;
+
     }
 
     public Biblioteca(Biblioteca b) {
         this.nombreBiblioteca = b.nombreBiblioteca;
         this.libroList = b.libroList;
         this.personaList = b.personaList;
+        this.bibliotecarioList = b.bibliotecarioList;
+        this.usuarioList = b.usuarioList;
     }
 
     public String getNombreBiblioteca() {
@@ -78,7 +101,6 @@ public class Biblioteca {
         System.out.println(biblioteca);
     }
 */
-
 
 
     @Override

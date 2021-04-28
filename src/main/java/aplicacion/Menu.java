@@ -58,17 +58,19 @@ public class Menu {
             System.out.print("\n Elija una opción (1-10): ");
 
             entrada = opcion.nextInt();
-        } while (entrada > 10 || entrada < 1);
+        } while (entrada > 25 || entrada < 1);
 
 
         return entrada;
     }
-//todo ordenarlo más tarde
+
+    //todo ordenarlo más tarde
     public static void main(String[] args) {
         int entrada;
         Menu Menu = new Menu();
 
         entrada = Menu.executeMainMenu();
+        Biblioteca biblioteca = new Biblioteca();
         Persona bibliotecario = new Bibliotecario();
         Usuario usuario = new Usuario();
         Bibliotecario bibliotecario1 = new Bibliotecario();
@@ -105,8 +107,13 @@ public class Menu {
         while (entrada != 20) {
             switch (entrada) {
                 case 1:
-                    myList.add(Libro.agregarLibro());
-                    entrada = Menu.executeMainMenu();
+                    try {
+                        myList.add(Libro.agregarLibro());
+                        entrada = Menu.executeMainMenu();
+                    } catch (Exception e) {
+                        System.out.println("ha habido un error al introducir el libro");
+                        entrada = Menu.executeMainMenu();
+                    }
                     break;
 
                 case 2:
@@ -114,7 +121,7 @@ public class Menu {
                     entrada = Menu.executeMainMenu();
                     break;
                 case 3:
-                   Libro.buscarIsbn(myList);
+                    Libro.buscarIsbn(myList);
                     entrada = Menu.executeMainMenu();
                     break;
                 case 4:
