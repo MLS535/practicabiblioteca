@@ -95,8 +95,10 @@ public class Bibliotecario extends Persona {
         String password = password1.nextLine();
         bibliotecario.setPassword(password);
 
-        bibliotecarioList.add(bibliotecario);
-        return bibliotecario;
+        bibliotecarios.add(bibliotecario);
+        personaArrayList.add(bibliotecario);
+        //Biblioteca.setBibliotecarioList(bibliotecarioList);
+        System.out.println(bibliotecario);
     }
 
 
@@ -110,20 +112,21 @@ public class Bibliotecario extends Persona {
         System.out.print("\n Introduce tu contraseña: ");
         Scanner leer = new Scanner(System.in);
         String contrasena = leer.nextLine();
-        int comprobante = 1;
-        //ArrayList<Bibliotecario> bibliotecarios = new ArrayList<>();
-       // Bibliotecario bibliotecario =new Bibliotecario();
 
-     //biblioteca.getPersonaList().get(i).equals(bibliotecario.getPassword())
-        for (int i = 0; i < Biblioteca.getBibliotecarioList().size(); i++) {
-            if (Biblioteca.getBibliotecarioList().equals(contrasena)) {
-                System.out.println("\n" +"Acceso correcto");
+        int comprobante = 1;
+        Bibliotecario bibliotecario = new Bibliotecario();
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        for (int i = 0; i < bibliotecarios.size(); i++) {
+            if (bibliotecarios.get(i).getNif().equals(nif) && bibliotecarios.get(i).getPassword().equals(contrasena)) {
+                System.out.println("\n" + "Acceso correcto");
                 comprobante = 0;
             }
         }
         if (comprobante == 1) {
             System.out.println("No es correcto");
         }
+
     }
 
     //todo falta averiguar por que la reserva aparece en todos los usuarios
