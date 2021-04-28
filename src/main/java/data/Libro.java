@@ -71,6 +71,8 @@ public class Libro {
     }
 
     public void setNumCopias(int numCopias) {
+        if (numCopias < 1)
+            throw new IllegalArgumentException();
         this.numCopias = numCopias;
     }
 
@@ -132,7 +134,7 @@ public class Libro {
         return libro;
     }
 
-//Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
+    //todo no eliminar un libro reservado
     public static void eliminarLibro(ArrayList<Libro> libroList) {
         System.out.print("\n ISBN a buscar: ");
         Scanner leer = new Scanner(System.in);
@@ -150,7 +152,7 @@ public class Libro {
         }
     }
 
-//Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
+    //todo preguntar si está bien o necesita algo más
     public static void buscarIsbn(ArrayList<Libro> libroList) {
 
         System.out.print("\n ISBN a buscar: ");
@@ -159,7 +161,8 @@ public class Libro {
         int comprobante = 1;
         for (int contador = 0; contador < libroList.size(); contador++) {
             if (libroList.get(contador).getIsbn().equals(isbn)) {
-                System.out.println("\n" + libroList.get(contador).getIsbn() + ", " + libroList.get(contador).getTitulo() + " y " + libroList.get(contador).getEditorial() + " editorial.");
+                System.out.println("\n" + "La posicion del libro es " + libroList.indexOf(libroList.get(contador)) + ", " + libroList.get(contador).getIsbn() + ", " + libroList.get(contador).getTitulo() + " y " + libroList.get(contador).getEditorial() + " editorial.");
+                comprobante = 0;
             }
         }
         if (comprobante == 1) {
@@ -167,7 +170,6 @@ public class Libro {
         }
     }
 
-//Hay que mostrar un mensaje genérico para cuando no encuentra lo que busca
     public static void buscarTitulo(ArrayList<Libro> libroList) {
         System.out.print("\n Titulo a buscar: ");
         Scanner leer = new Scanner(System.in);
