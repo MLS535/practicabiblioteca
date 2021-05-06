@@ -9,19 +9,20 @@ public class Usuario extends Persona {
     private String direccion;
     private Integer codigoPostal;
     private String correoElectronico;
-    private List<Reserva> listaReserva;
+    private ArrayList<Reserva> listaReserva;
 
     public Usuario() {
 
     }
 
-    public Usuario(String nombre, String apellido1, String apellido2, Integer edad, Integer telefono, String direccion, Integer codigoPostal, String correoElectronico, List<Reserva> listaReserva) {
+    public Usuario(String nombre, String apellido1, String apellido2, Integer edad, Integer telefono, String direccion,
+                   Integer codigoPostal, String correoElectronico, ArrayList<Reserva> listaReserva) {
         super(nombre, apellido1, apellido2, edad);
         this.telefono = telefono;
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;
         this.correoElectronico = correoElectronico;
-        this.listaReserva = listaReserva;
+        this.listaReserva= new ArrayList<>();
     }
 
     public Usuario(Usuario usuario) {
@@ -64,17 +65,17 @@ public class Usuario extends Persona {
         this.correoElectronico = correoElectronico;
     }
 
-    public List<Reserva> getListaReserva() {
+    public ArrayList<Reserva> getListaReserva() {
         return listaReserva;
     }
 
-    public void setListaReserva(List<Reserva> listaReserva) {
+    public void setListaReserva(ArrayList<Reserva> listaReserva) {
         this.listaReserva = listaReserva;
     }
 
     @Override
     public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
-
+        ArrayList<Reserva> reservaArrayList = new ArrayList<>();
         Usuario usuario = new Usuario();
         List<Persona> usuarioList = new ArrayList<>();
         System.out.println("Introduce el Nombre:");
@@ -116,7 +117,7 @@ public class Usuario extends Persona {
         Scanner email = new Scanner(System.in);
         String correo = email.nextLine();
         usuario.setCorreoElectronico(correo);
-        //usuario.setListaReserva(null);
+        usuario.setListaReserva(reservaArrayList);
 
         // personaArrayList.add(usuario);
         usuarioList.add(usuario);

@@ -129,7 +129,6 @@ public class Bibliotecario extends Persona {
 
     }
 
-    //todo falta averiguar por que la reserva aparece en todos los usuarios
     public static void reservarLibro(ArrayList<Usuario> usuarios, ArrayList<Libro> libroArrayList, ArrayList<Reserva> reservaArrayList) {
         //Usuario.accesoUsuario(usuarios);
         System.out.print("\n Introduce tu telefono: ");
@@ -150,26 +149,87 @@ public class Bibliotecario extends Persona {
                 Date fecha = new Date();
                 for (int contador = 0; contador < libroArrayList.size(); contador++) {
                     if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > 0) {
-                        reservaArrayList.add(new Reserva(libroArrayList.get(contador), fecha));
+                        Reserva reserva = new Reserva(libroArrayList.get(contador), fecha);//ponerlo en una variable para que la reserva del usuario y de  la lista de reservas sea la misma
+
+                        reservaArrayList.add(reserva);//agregar el mismo libro del usuario a las reservas
                         libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() - 1);
+                        usuarios.get(i).getListaReserva().add(reserva);//agregar solo la reserva de ese libro al usuario
+                        //si en el metodo anterior sale que la lista de reservas es nula, debes inicializarla en el constructor del usuario
+                        //listaReservas = new ArrayList<>();
 
                         comprobante = 0;
-                        System.out.println(libroArrayList);
-                        System.out.println(reservaArrayList);
+                        compro = 0;//Para que no diga que "No es correcto"
+                        System.out.println(libroArrayList.get(contador));
+                        System.out.println(reserva);
+
+                        //salirse de los ciclos, pues ya agregó la reserva
+                        contador = libroArrayList.size();
+                        i = usuarios.size();
                     }
                 }
                 if (comprobante == 1) {
                     System.out.println("No hay copias disponibles");
                 }
             }
-        }
-        for (int j = 0; j < usuarios.size(); j++) {
-            if (usuarios.get(j).getTelefono().equals(telefono) && usuarios.get(j).getCorreoElectronico().equals(email)) {
-                usuarios.get(j).setListaReserva(reservaArrayList);
-                compro = 0;
-                System.out.println(usuarios);
 
+        }
+        if (compro == 1) {
+            System.out.println("No es correcto");
+
+        }
+    }
+
+    public static void devolverlibro(ArrayList<Usuario> usuarios, ArrayList<Libro> libroArrayList, ArrayList<Reserva> reservaArrayList) {
+        //Usuario.accesoUsuario(usuarios);
+        System.out.print("\n Introduce tu telefono: ");
+        Scanner leer1 = new Scanner(System.in);
+        Integer telefono = Integer.parseInt(leer1.nextLine());
+        System.out.print("\n Introduce tu email: ");
+        Scanner leer = new Scanner(System.in);
+        String email = leer.nextLine();
+        int compro = 1;
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getTelefono().equals(telefono) && usuarios.get(i).getCorreoElectronico().equals(email)) {
+                System.out.println("\n" + "Acceso correcto");
+                Usuario usuario = new Usuario();
+                System.out.print("\n ISBN a buscar: ");
+                Scanner leer3 = new Scanner(System.in);
+                String isbn = leer3.nextLine();
+                int comprobante = 1;
+                Date fecha = new Date();
+                //< libroArrayList.get(contador).getNumCopias()
+                for (int contador = 0; contador < libroArrayList.size(); contador++) {
+                    if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > -1 ) {
+                        Reserva reserva = new Reserva(libroArrayList.get(contador--), fecha);//ponerlo en una variable para que la reserva del usuario y de  la lista de reservas sea la misma
+
+                       // usuarios.remove(reserva);
+                        reservaArrayList.remove(reserva);;
+                        libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() + 1);
+
+                        if(usuarios.get(i).getListaReserva().equals(reserva)) {
+                            usuarios.remove(reserva);
+                        }
+                        //elimina el mismo libro del usuario a las reservas
+
+                       //elimina solo la reserva de ese libro al usuario
+                        //si en el metodo anterior sale que la lista de reservas es nula, debes inicializarla en el constructor del usuario
+
+                        comprobante = 0;
+                        compro = 0;//Para que no diga que "No es correcto"
+                        System.out.println(libroArrayList.get(contador));
+                        System.out.println(reservaArrayList);
+                        System.out.println(usuarios);
+
+                        //salirse de los ciclos, pues ya agregó la reserva
+                        contador = libroArrayList.size();
+                        i = usuarios.size();
+                    }
+                }
+                if (comprobante == 1) {
+                    System.out.println("No hay copias disponibles");
+                }
             }
+
         }
         if (compro == 1) {
             System.out.println("No es correcto");

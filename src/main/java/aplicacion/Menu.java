@@ -53,9 +53,10 @@ public class Menu {
             System.out.println(" 8. Iniciar sesion como bibliotecario");
             System.out.println(" 9. Iniciar sesion como usuario");
             System.out.println(" 10. Comprobar que solicitarDatosPersona es correcto Usuario");
-            System.out.println(" 11. Comprobar que solicitarDatosPersona es correcto Usuario");
+            System.out.println(" 11. Realizar una reserva");
+            System.out.println(" 12. devolver un libro");
             System.out.print("\n Para salir pulse 21 ");
-            System.out.print("\n Elija una opción (1-10): ");
+            System.out.print("\n Elija una opción (1-12): ");
 
             entrada = opcion.nextInt();
         } while (entrada > 25 || entrada < 1);
@@ -100,8 +101,9 @@ public class Menu {
          *      personas.add(new Bibliotecario("Maite", "Ladaria", "Sanchez", 25, "Directora", "43152327E", "12345678"));
          */
 
-        usuarioArrayList.add(new Usuario("Paco", "Martinez", "Pedro", 55, 658490268, "Calle 13", 07003, "pacomartinez@gmail.com", reservaArrayList));
-        usuarioArrayList.add(new Usuario("Pamela", "Mejia", "Fontseca", 20, 658490268, "Calle Blanquerna", 07777, "pamelamejia@gmail.com", reservaArrayList));
+        usuarioArrayList.add(new Usuario("1", "1", "1", 1, 1, "Calle 13", 07003, "1", reservaArrayList));
+   usuarioArrayList.add(new Usuario("Paco", "Martinez", "Pedro", 55, 658490267, "Calle 13", 07003, "pacomartinez@gmail.com", reservaArrayList));
+    usuarioArrayList.add(new Usuario("Pamela", "Mejia", "Fontseca", 20, 658490268, "Calle Blanquerna", 07777, "pamelamejia@gmail.com", reservaArrayList));
 
 
         while (entrada != 20) {
@@ -162,6 +164,10 @@ public class Menu {
                     break;
                 case 11:
                     Bibliotecario.reservarLibro(usuarioArrayList,myList,reservaArrayList);
+                    entrada = Menu.executeMainMenu();
+                    break;
+                case 12:
+                    Bibliotecario.devolverlibro(usuarioArrayList,myList,reservaArrayList);
                     entrada = Menu.executeMainMenu();
                     break;
                 default:
