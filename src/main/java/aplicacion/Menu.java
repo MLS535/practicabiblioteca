@@ -55,6 +55,7 @@ public class Menu {
             System.out.println(" 10. Comprobar que solicitarDatosPersona es correcto Usuario");
             System.out.println(" 11. Realizar una reserva");
             System.out.println(" 12. devolver un libro");
+            System.out.println(" 13. cambiar contraseña");
             System.out.print("\n Para salir pulse 21 ");
             System.out.print("\n Elija una opción (1-12): ");
 
@@ -168,6 +169,10 @@ public class Menu {
                     break;
                 case 12:
                     Bibliotecario.devolverlibro(usuarioArrayList,myList,reservaArrayList);
+                    entrada = Menu.executeMainMenu();
+                    break;
+                case 13:
+                    bibliotecario1.cambiarpassword(bibliotecarioArrayList, usuarioArrayList, personaArrayList);
                     entrada = Menu.executeMainMenu();
                     break;
                 default:

@@ -80,6 +80,7 @@ public abstract class Persona {
 
     }
 
+    public abstract void cambiarpassword(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList);
 
     @Override
     public String toString() {

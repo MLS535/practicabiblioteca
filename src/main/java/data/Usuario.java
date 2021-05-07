@@ -126,6 +126,16 @@ public class Usuario extends Persona {
         System.out.println(usuario);
     }
 
+    @Override
+    public void cambiarpassword(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
+        Usuario usuario = new Usuario();
+        System.out.println("Introduce el correo electrónico");
+        Scanner email = new Scanner(System.in);
+        String correo = email.nextLine();
+        usuario.setCorreoElectronico(correo);
+
+    }
+
     /*
     public static void accesoUsuario(ArrayList<Usuario> usuarioArrayList) {
 

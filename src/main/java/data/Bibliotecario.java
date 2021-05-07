@@ -58,7 +58,6 @@ public class Bibliotecario extends Persona {
 
     @Override
     public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> personaArrayList) {
-        Biblioteca biblioteca = new Biblioteca();
         Bibliotecario bibliotecario = new Bibliotecario();
         System.out.println("Introduce el nombre");
         Scanner nombre2 = new Scanner(System.in);
@@ -237,6 +236,27 @@ public class Bibliotecario extends Persona {
         }
     }
 
+    @Override
+    public void cambiarpassword(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
+        System.out.println("Introduce el NIF:");
+        Scanner nif1 = new Scanner(System.in);
+        String nif = nif1.nextLine();
+
+        System.out.println("Introduce el Password que quieres cambiar:");
+        Scanner password1 = new Scanner(System.in);
+        String password = password1.nextLine();
+        /*System.out.println("Repite el Password que quieres cambiar:");
+        Scanner password2 = new Scanner(System.in);
+        String password_a = password2.nextLine();
+        if (password == password_a) {*/
+
+            for (int i = 0; i < bibliotecarios.size(); i++) {
+                if (bibliotecarios.get(i).getNif().equals(nif)) {
+                    bibliotecarios.get(i).setPassword(password);
+                }
+                System.out.println("La contraseña se ha cambiado correctamente");
+            }
+    }
 
     @Override
     public String toString() {
