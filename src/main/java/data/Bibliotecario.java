@@ -198,19 +198,20 @@ public class Bibliotecario extends Persona {
                 Date fecha = new Date();
                 //< libroArrayList.get(contador).getNumCopias()
                 for (int contador = 0; contador < libroArrayList.size(); contador++) {
-                    if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > -1 ) {
+                    if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > -1) {
                         Reserva reserva = new Reserva(libroArrayList.get(contador--), fecha);//ponerlo en una variable para que la reserva del usuario y de  la lista de reservas sea la misma
 
-                       // usuarios.remove(reserva);
-                        reservaArrayList.remove(reserva);;
+                        // usuarios.remove(reserva);
+                        reservaArrayList.remove(reserva);
+                        ;
                         libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() + 1);
 
-                        if(usuarios.get(i).getListaReserva().equals(reserva)) {
+                        if (usuarios.get(i).getListaReserva().equals(reserva)) {
                             usuarios.remove(reserva);
                         }
                         //elimina el mismo libro del usuario a las reservas
 
-                       //elimina solo la reserva de ese libro al usuario
+                        //elimina solo la reserva de ese libro al usuario
                         //si en el metodo anterior sale que la lista de reservas es nula, debes inicializarla en el constructor del usuario
 
                         comprobante = 0;
