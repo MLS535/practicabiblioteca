@@ -125,16 +125,26 @@ public class Usuario extends Persona {
         arrayList.add(usuario);
         System.out.println(usuario);
     }
-
+    //todo ponerlo en el menu
     @Override
     public void cambiarpassword(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
-        Usuario usuario = new Usuario();
+
+        System.out.println("Introduce el numero de telefono");
+        Scanner telef = new Scanner(System.in);
+        Integer telefono = Integer.parseInt(telef.nextLine());
+
         System.out.println("Introduce el correo electrónico");
         Scanner email = new Scanner(System.in);
         String correo = email.nextLine();
-        usuario.setCorreoElectronico(correo);
 
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getTelefono().equals(telefono)) {
+                usuarios.get(i).setCorreoElectronico(correo);
+            }
+            System.out.println("El correo electrónico se ha cambiado correctamente");
+        }
     }
+
 
     /*
     public static void accesoUsuario(ArrayList<Usuario> usuarioArrayList) {
