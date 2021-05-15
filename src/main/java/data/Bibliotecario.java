@@ -164,6 +164,7 @@ public class Bibliotecario extends Persona {
                         //salirse de los ciclos, pues ya agregó la reserva
                         contador = libroArrayList.size();
                         i = usuarios.size();
+                        System.out.println("Reserva realizada por "+usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido1());
                     }
                 }
                 if (comprobante == 1) {
@@ -190,7 +191,6 @@ public class Bibliotecario extends Persona {
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getTelefono().equals(telefono) && usuarios.get(i).getCorreoElectronico().equals(email)) {
                 System.out.println("\n" + "Acceso correcto");
-                Usuario usuario = new Usuario();
                 System.out.print("\n ISBN a buscar: ");
                 Scanner leer3 = new Scanner(System.in);
                 String isbn = leer3.nextLine();
@@ -219,7 +219,7 @@ public class Bibliotecario extends Persona {
                         System.out.println(libroArrayList.get(contador));
                         System.out.println(reservaArrayList);
                         System.out.println(usuarios);
-
+                        System.out.println("Libro devuelto por "+usuarios.get(i).getNombre()+" " +usuarios.get(i).getApellido1());
                         //salirse de los ciclos, pues ya agregó la reserva
                         contador = libroArrayList.size();
                         i = usuarios.size();
@@ -228,6 +228,8 @@ public class Bibliotecario extends Persona {
                 if (comprobante == 1) {
                     System.out.println("No hay copias disponibles");
                 }
+
+
             }
 
         }
