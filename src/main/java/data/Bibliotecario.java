@@ -197,24 +197,11 @@ public class Bibliotecario extends Persona {
                 int comprobante = 1;
                 Date fecha = new Date();
                 //< libroArrayList.get(contador).getNumCopias()
-                for (int contador = 0; contador < libroArrayList.size(); contador++) {
-                    if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > -1) {
-                        Reserva reserva = new Reserva(libroArrayList.get(contador--), fecha);//ponerlo en una variable para que la reserva del usuario y de  la lista de reservas sea la misma
-
-                        // usuarios.remove(reserva);
-                        reservaArrayList.remove(reserva);
-                        ;
+                for (int contador = 0; contador < reservaArrayList.size(); contador++) {
+                    if (reservaArrayList.get(contador).getLibro().getIsbn().equals(isbn)) {
+                        reservaArrayList.remove(contador);
+                        usuarios.get(i).getListaReserva().remove(contador);
                         libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() + 1);
-
-                        if (usuarios.get(i).getListaReserva().equals(reserva)) {
-                            usuarios.remove(reserva);
-                        }
-                        //elimina el mismo libro del usuario a las reservas
-
-                        //elimina solo la reserva de ese libro al usuario
-                        //si en el metodo anterior sale que la lista de reservas es nula, debes inicializarla en el constructor del usuario
-
-                        comprobante = 0;
                         compro = 0;//Para que no diga que "No es correcto"
                         System.out.println(libroArrayList.get(contador));
                         System.out.println(reservaArrayList);
@@ -223,8 +210,31 @@ public class Bibliotecario extends Persona {
                         //salirse de los ciclos, pues ya agregó la reserva
                         contador = libroArrayList.size();
                         i = usuarios.size();
+                        break;
                     }
                 }
+                /*
+                for (int contador = 0; contador < libroArrayList.size(); contador++) {
+                    if (usuarios.get(i).getListaReserva().get(contador).getLibro().getIsbn().equals(isbn)) {
+                        libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() + 1);
+                        //usuarios.get(i).getListaReserva().remove(libroArrayList.get(contador)); Esta linea no se que hace pero siento que ya no es necesario, en todo caso si quieres asignar la lista de reserva a un usuario vamos a poner la siguiente linea.
+
+                        //usuarios.get(i).setListaReserva(reservaArrayList); La única manera de poder borrarla
+
+                        //comprobante = 0;
+
+
+                        compro = 0;//Para que no diga que "No es correcto"
+                        System.out.println(libroArrayList.get(contador));
+                        System.out.println(reservaArrayList);
+                        System.out.println(usuarios);
+
+                        //salirse de los ciclos, pues ya agregó la reserva
+                        contador = libroArrayList.size();
+                        i = usuarios.size();
+                    }
+                }
+                */
                 if (comprobante == 1) {
                     System.out.println("No hay copias disponibles");
                 }
@@ -253,12 +263,12 @@ public class Bibliotecario extends Persona {
         String password_a = password2.nextLine();
         if (password == password_a) {*/
 
-            for (int i = 0; i < bibliotecarios.size(); i++) {
-                if (bibliotecarios.get(i).getNif().equals(nif)) {
-                    bibliotecarios.get(i).setPassword(password);
-                }
-                System.out.println("La contraseña se ha cambiado correctamente");
+        for (int i = 0; i < bibliotecarios.size(); i++) {
+            if (bibliotecarios.get(i).getNif().equals(nif)) {
+                bibliotecarios.get(i).setPassword(password);
             }
+            System.out.println("La contraseña se ha cambiado correctamente");
+        }
     }
 
     @Override
