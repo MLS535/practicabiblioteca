@@ -75,6 +75,7 @@ public class Biblioteca {
         this.personaList = personaList;
     }
 
+
     public static void mostrarTodosLibros(ArrayList<Libro> libroList) {
         for (int i = 0; i < libroList.size(); i++) {
 
@@ -95,12 +96,13 @@ public class Biblioteca {
             System.out.println(librosdisponibles.get(i).toString() + "\n");
         }
     }
-   /* public static void nombrebiblio(String nombreBibi){
+    //todo comprobar
+   public static void nombrebiblio(String nombreBibi){
         Biblioteca biblioteca= new Biblioteca();
         biblioteca.setNombreBiblioteca(nombreBibi);
         System.out.println(biblioteca);
     }
-*/
+
 
 
     @Override

@@ -96,15 +96,11 @@ public class Bibliotecario extends Persona {
 
         bibliotecarios.add(bibliotecario);
         personaArrayList.add(bibliotecario);
-        //Biblioteca.setBibliotecarioList(bibliotecarioList);
         System.out.println(bibliotecario);
     }
 
 
     public static void accesoBibliotecario(ArrayList<Bibliotecario> bibliotecarios) {
-    /* personas.add(new Bibliotecario("Ignacio", "Akrich", "Vazquez", 25, "Vicedirector", "43152327A", "12345678"));
-     personas.add(new Bibliotecario("Maite", "Ladaria", "Sanchez", 25, "Directora", "43152327E", "12345678"));
-        */
         System.out.print("\n Introduce tu nif: ");
         Scanner leer1 = new Scanner(System.in);
         String nif = leer1.nextLine();
@@ -113,8 +109,9 @@ public class Bibliotecario extends Persona {
         String contrasena = leer.nextLine();
 
         int comprobante = 1;
-        Bibliotecario bibliotecario = new Bibliotecario();
+        /*Bibliotecario bibliotecario = new Bibliotecario();
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        */
 
         for (int i = 0; i < bibliotecarios.size(); i++) {
             if (bibliotecarios.get(i).getNif().equals(nif) && bibliotecarios.get(i).getPassword().equals(contrasena)) {
@@ -129,7 +126,6 @@ public class Bibliotecario extends Persona {
     }
 
     public static void reservarLibro(ArrayList<Usuario> usuarios, ArrayList<Libro> libroArrayList, ArrayList<Reserva> reservaArrayList) {
-        //Usuario.accesoUsuario(usuarios);
         System.out.print("\n Introduce tu telefono: ");
         Scanner leer1 = new Scanner(System.in);
         Integer telefono = Integer.parseInt(leer1.nextLine());
@@ -140,7 +136,6 @@ public class Bibliotecario extends Persona {
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getTelefono().equals(telefono) && usuarios.get(i).getCorreoElectronico().equals(email)) {
                 System.out.println("\n" + "Acceso correcto");
-                Usuario usuario = new Usuario();
                 System.out.print("\n ISBN a buscar: ");
                 Scanner leer3 = new Scanner(System.in);
                 String isbn = leer3.nextLine();
@@ -148,23 +143,21 @@ public class Bibliotecario extends Persona {
                 Date fecha = new Date();
                 for (int contador = 0; contador < libroArrayList.size(); contador++) {
                     if (libroArrayList.get(contador).getIsbn().equals(isbn) && libroArrayList.get(contador).getNumCopiasDisponibles() > 0) {
-                        Reserva reserva = new Reserva(libroArrayList.get(contador), fecha);//ponerlo en una variable para que la reserva del usuario y de  la lista de reservas sea la misma
-
+                        Reserva reserva = new Reserva(libroArrayList.get(contador), fecha);//ponemos en una variable para que la reserva del usuario y de  la lista de reservas sea la misma
                         reservaArrayList.add(reserva);//agregar el mismo libro del usuario a las reservas
                         libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() - 1);
                         usuarios.get(i).getListaReserva().add(reserva);//agregar solo la reserva de ese libro al usuario
-                        //si en el metodo anterior sale que la lista de reservas es nula, debes inicializarla en el constructor del usuario
-                        //listaReservas = new ArrayList<>();
 
                         comprobante = 0;
                         compro = 0;//Para que no diga que "No es correcto"
-                        System.out.println(libroArrayList.get(contador));
-                        System.out.println(reserva);
+                        //System.out.println(libroArrayList.get(contador));
+                        //System.out.println(reserva);
 
                         //salirse de los ciclos, pues ya agregó la reserva
+                        System.out.println("El Libro: \n"+ libroArrayList.get(contador) + "\n reservado por "+usuarios.get(i).getNombre()+" " +usuarios.get(i).getApellido1());
                         contador = libroArrayList.size();
                         i = usuarios.size();
-                        System.out.println("Reserva realizada por "+usuarios.get(i).getNombre()+" "+usuarios.get(i).getApellido1());
+
                     }
                 }
                 if (comprobante == 1) {
@@ -173,14 +166,13 @@ public class Bibliotecario extends Persona {
             }
 
         }
-        if (compro == 1) {
+        if (compro ==1) {
             System.out.println("No es correcto");
 
         }
     }
 
     public static void devolverlibro(ArrayList<Usuario> usuarios, ArrayList<Libro> libroArrayList, ArrayList<Reserva> reservaArrayList) {
-        //Usuario.accesoUsuario(usuarios);
         System.out.print("\n Introduce tu telefono: ");
         Scanner leer1 = new Scanner(System.in);
         Integer telefono = Integer.parseInt(leer1.nextLine());
@@ -194,9 +186,6 @@ public class Bibliotecario extends Persona {
                 System.out.print("\n ISBN a buscar: ");
                 Scanner leer3 = new Scanner(System.in);
                 String isbn = leer3.nextLine();
-                int comprobante = 1;
-                Date fecha = new Date();
-                //< libroArrayList.get(contador).getNumCopias()
                 for (int contador = 0; contador < reservaArrayList.size(); contador++) {
                     if (reservaArrayList.get(contador).getLibro().getIsbn().equals(isbn)) {
                         reservaArrayList.remove(contador);
@@ -212,31 +201,6 @@ public class Bibliotecario extends Persona {
                         i = usuarios.size();
                         break;
                     }
-                }
-                /*
-                for (int contador = 0; contador < libroArrayList.size(); contador++) {
-                    if (usuarios.get(i).getListaReserva().get(contador).getLibro().getIsbn().equals(isbn)) {
-                        libroArrayList.get(contador).setNumCopiasDisponibles(libroArrayList.get(contador).getNumCopiasDisponibles() + 1);
-                        //usuarios.get(i).getListaReserva().remove(libroArrayList.get(contador)); Esta linea no se que hace pero siento que ya no es necesario, en todo caso si quieres asignar la lista de reserva a un usuario vamos a poner la siguiente linea.
-
-                        //usuarios.get(i).setListaReserva(reservaArrayList); La única manera de poder borrarla
-
-                        //comprobante = 0;
-
-
-                        compro = 0;//Para que no diga que "No es correcto"
-                        System.out.println(libroArrayList.get(contador));
-                        System.out.println(reservaArrayList);
-                        System.out.println(usuarios);
-
-                        //salirse de los ciclos, pues ya agregó la reserva
-                        contador = libroArrayList.size();
-                        i = usuarios.size();
-                    }
-                }
-                */
-                if (comprobante == 1) {
-                    System.out.println("No hay copias disponibles");
                 }
 
 
@@ -258,10 +222,6 @@ public class Bibliotecario extends Persona {
         System.out.println("Introduce el Password que quieres cambiar:");
         Scanner password1 = new Scanner(System.in);
         String password = password1.nextLine();
-        /*System.out.println("Repite el Password que quieres cambiar:");
-        Scanner password2 = new Scanner(System.in);
-        String password_a = password2.nextLine();
-        if (password == password_a) {*/
 
         for (int i = 0; i < bibliotecarios.size(); i++) {
             if (bibliotecarios.get(i).getNif().equals(nif)) {

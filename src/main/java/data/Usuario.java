@@ -74,7 +74,7 @@ public class Usuario extends Persona {
     }
 
     @Override
-    public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> arrayList) {
+    public void solicitarDatosPersona(ArrayList<Bibliotecario> bibliotecarios, ArrayList<Usuario> usuarios, ArrayList<Persona> personaArrayList) {
         ArrayList<Reserva> reservaArrayList = new ArrayList<>();
         Usuario usuario = new Usuario();
         List<Persona> usuarioList = new ArrayList<>();
@@ -119,10 +119,10 @@ public class Usuario extends Persona {
         usuario.setCorreoElectronico(correo);
         usuario.setListaReserva(reservaArrayList);
 
-        // personaArrayList.add(usuario);
+
         usuarioList.add(usuario);
         usuarios.add(usuario);
-        arrayList.add(usuario);
+        personaArrayList.add(usuario);
         System.out.println(usuario);
     }
     //todo ponerlo en el menu

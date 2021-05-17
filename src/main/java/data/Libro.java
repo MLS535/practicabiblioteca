@@ -84,19 +84,11 @@ public class Libro {
         this.numCopiasDisponibles = numCopiasDisponibles;
     }
 
-    //todo Son todos los libros incluidos los no disponibles o solo los disponibles?
     public static void contadorLibros(ArrayList<Libro> libroList) {
-        ArrayList<Libro> librosdisponibles = new ArrayList<>();
-
-        for (int i = 0; i < libroList.size(); i++) {
-            if (libroList.get(i).getNumCopiasDisponibles() > 0) {
-                librosdisponibles.add(libroList.get(i));
-            }
-        }
-        System.out.println(librosdisponibles.size());
+        System.out.println("En la biblioteca hay "+libroList.size() +" libros");
     }
 
-    //todo limitar el isbn para que sea único
+
     public static Libro agregarLibro() {
         Libro libro = new Libro();
         List<Libro> libroList = new ArrayList<>();
@@ -134,21 +126,21 @@ public class Libro {
         return libro;
     }
 
-    //todo no eliminar un libro reservado
+
     public static void eliminarLibro(ArrayList<Libro> libroList) {
         System.out.print("\n ISBN a buscar: ");
         Scanner leer = new Scanner(System.in);
         String isbn = leer.nextLine();
         int comprobante = 1;
         for (int contador = 0; contador < libroList.size(); contador++) {
-            if (libroList.get(contador).getIsbn().equals(isbn)) {
+            if (libroList.get(contador).getIsbn().equals(isbn) && libroList.get(contador).getNumCopias() == libroList.get(contador).getNumCopiasDisponibles()) {
                 libroList.remove(contador);
                 System.out.print("\nLibro borrado.");
                 comprobante = 0;
             }
         }
         if (comprobante == 1) {
-            System.out.println("No se encuentra el libro");
+            System.out.println("No se encuentra el libro o el libro está reservado");
         }
     }
 
@@ -197,7 +189,10 @@ public class Libro {
             if (libroList.get(i).getIsbn().equals(isbn)) {
                 libroList.get(i).setNumCopias(getNumCopias() + numCopias);
                 libroList.get(i).setNumCopiasDisponibles(getNumCopiasDisponibles() + numCopias);
+            }else{
+                libroList.add(Libro.agregarLibro());
             }
+
         }
     }
 

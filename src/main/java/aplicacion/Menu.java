@@ -8,34 +8,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    /*public static void main(String[] args) {
-
-        //String isbn, String titulo, String autor, String editorial, int numCopias, int numCopiasDisponibles
-        //
-        //myList.add(Libro.agregarLibro("55552ff", "La pantera negra","pepe pardo", "ignatius", 25,255));
-
-        System.out.println(" BIENVENIDO A LA BIBLIOTECA");
-        System.out.println(" ----------------");
-        System.out.println(" 1. AGREGAR LIBROS");
-        System.out.println(" 1. VER TODOS LOS LIBROS");
-        Scanner autor1 = new Scanner(System.in);
-        System.out.print("\n Elija una opción (1-2): ");
-        String autor = autor1.nextLine();
-        ArrayList<Libro> myList = new ArrayList<>();
-        switch (autor) {
-            case "1":
-                myList.add(Libro.agregarLibro());
-
-                break;
-            case "2":
-                Biblioteca.mostrarTodosLibros(myList);
-                break;
-            default:
-                System.out.print("\nLo siento, la opción elegida no es correcta.");
-        }
-    }*/
-
-    public int executeMainMenu() {
+  /*  public int executeMainMenu() {
         int entrada;
         Scanner opcion = new Scanner(System.in);
 
@@ -72,12 +45,8 @@ public class Menu {
         Menu Menu = new Menu();
 
         entrada = Menu.executeMainMenu();
-        Biblioteca biblioteca = new Biblioteca();
-        Persona bibliotecario = new Bibliotecario();
         Usuario usuario = new Usuario();
         Bibliotecario bibliotecario1 = new Bibliotecario();
-        Date date = new Date();
-        Libro libros = new Libro();
         Libro libro1 = new Libro("001a", "El quijote", "Cervantes", "el quijote pum", 5, 5);
         ArrayList<Libro> myList = new ArrayList<>();
         ArrayList<Persona> personaArrayList = new ArrayList<>();
@@ -94,17 +63,9 @@ public class Menu {
         bibliotecarioArrayList.add(new Bibliotecario("Ignacio", "Akrich", "Vazquez", 25, "Vicedirector", "43152327A", "12345678"));
         bibliotecarioArrayList.add(new Bibliotecario("Maite", "Ladaria", "Sanchez", 25, "Directora", "43152327E", "12345678"));
 
-
-        /**
-         *TODO A TENER EN CUENTA QUE USUARIO TIENE UN ARRAYLIST
-         * reservaArrayList.add(new Reserva(libro1, date));
-         *   personas.add(new Bibliotecario("Ignacio", "Akrich", "Vazquez", 25, "Vicedirector", "43152327A", "12345678"));
-         *      personas.add(new Bibliotecario("Maite", "Ladaria", "Sanchez", 25, "Directora", "43152327E", "12345678"));
-         */
-
         usuarioArrayList.add(new Usuario("1", "1", "1", 1, 1, "Calle 13", 07003, "1", reservaArrayList));
-   usuarioArrayList.add(new Usuario("Paco", "Martinez", "Pedro", 55, 658490267, "Calle 13", 07003, "pacomartinez@gmail.com", reservaArrayList));
-    usuarioArrayList.add(new Usuario("Pamela", "Mejia", "Fontseca", 20, 658490268, "Calle Blanquerna", 07777, "pamelamejia@gmail.com", reservaArrayList));
+        usuarioArrayList.add(new Usuario("Paco", "Martinez", "Pedro", 55, 658490267, "Calle 13", 07003, "pacomartinez@gmail.com", reservaArrayList));
+        usuarioArrayList.add(new Usuario("Pamela", "Mejia", "Fontseca", 20, 658490268, "Calle Blanquerna", 07777, "pamelamejia@gmail.com", reservaArrayList));
 
 
         while (entrada != 20) {
@@ -145,7 +106,7 @@ public class Menu {
                         bibliotecario1.solicitarDatosPersona(bibliotecarioArrayList, usuarioArrayList, personaArrayList);
                         System.out.println(personaArrayList);
                         entrada = Menu.executeMainMenu();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         System.out.println("Algo no se ha introducido bien");
                         entrada = Menu.executeMainMenu();
                     }
@@ -155,7 +116,7 @@ public class Menu {
                     entrada = Menu.executeMainMenu();
                     break;
                 case 9:
-
+                        Libro.contadorLibros(myList);
                     //Usuario.accesoUsuario(usuarioArrayList);
                     entrada = Menu.executeMainMenu();
                     break;
@@ -164,11 +125,11 @@ public class Menu {
                     entrada = Menu.executeMainMenu();
                     break;
                 case 11:
-                    Bibliotecario.reservarLibro(usuarioArrayList,myList,reservaArrayList);
+                    Bibliotecario.reservarLibro(usuarioArrayList, myList, reservaArrayList);
                     entrada = Menu.executeMainMenu();
                     break;
                 case 12:
-                    Bibliotecario.devolverlibro(usuarioArrayList,myList,reservaArrayList);
+                    Bibliotecario.devolverlibro(usuarioArrayList, myList, reservaArrayList);
                     entrada = Menu.executeMainMenu();
                     break;
                 case 13:
@@ -182,6 +143,6 @@ public class Menu {
         }
 
     }
-
+*/
 
 }
