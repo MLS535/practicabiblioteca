@@ -123,6 +123,7 @@ public class Libro {
         libro.setNumCopiasDisponibles(numCopiasDisponibles);
 
         libroList.add(libro);
+        System.out.println("Has creado el siguiente libro: ISBN: "+ libro.getIsbn() +", TITULO: "+ libro.getTitulo());
         return libro;
     }
 
@@ -180,17 +181,22 @@ public class Libro {
     //todo comprobar este metodo y preguntar en clase
     public void agregarLibroCopia(ArrayList<Libro> libroList) {
         Biblioteca biblioteca= new Biblioteca();
-        System.out.println("\n Introduce el ISBN de las copias que quiere añadir");
         Scanner isbn = new Scanner(System.in);
+        System.out.println("\n Introduce el ISBN de las copias que quiere añadir");
+        String leerisbn= isbn.nextLine();
         System.out.println("\n Cuantas copias quieres añadir?");
         Scanner leer = new Scanner(System.in);
         int numCopias = Integer.parseInt(leer.nextLine());
+
         for (int i = 0; i < libroList.size(); i++) {
-            if (libroList.get(i).getIsbn().equals(isbn)) {
+            if (libroList.get(i).getIsbn().equals(leerisbn)) {
                 libroList.get(i).setNumCopias(getNumCopias() + numCopias);
                 libroList.get(i).setNumCopiasDisponibles(getNumCopiasDisponibles() + numCopias);
-            }else{
+                System.out.println("Correcto");
+            }
+            else {
                 libroList.add(Libro.agregarLibro());
+                break;
             }
 
         }

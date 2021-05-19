@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Biblioteca {
     private String nombreBiblioteca;
-    private static List<Libro> libroList;
+    private static ArrayList<Libro> libroList;
     private static List<Persona> personaList;
     private static List<Bibliotecario> bibliotecarioList;
     private static List<Usuario> usuarioList;
@@ -31,7 +31,7 @@ public class Biblioteca {
 
     }
 
-    public Biblioteca(String nombreBiblioteca, List<Libro> libroList, List<Persona> personaList, List<Bibliotecario> bibliotecarioList, List<Usuario> usuarioList) {
+    public Biblioteca(String nombreBiblioteca, ArrayList<Libro> libroList, List<Persona> personaList, List<Bibliotecario> bibliotecarioList, List<Usuario> usuarioList) {
         this.nombreBiblioteca = nombreBiblioteca;
         this.libroList = libroList;
         this.personaList = personaList;
@@ -60,12 +60,13 @@ public class Biblioteca {
         this.nombreBiblioteca = nombreBiblioteca;
     }
 
-    public List<Libro> getLibroList() {
+    public ArrayList<Libro> getLibroList() {
         return libroList;
     }
 
-    public void setLibroList(List<Libro> libroList) {
+    public void setLibroList(ArrayList<Libro> libroList) {
         this.libroList = libroList;
+
     }
 
     public List<Persona> getPersonaList() {
@@ -79,14 +80,12 @@ public class Biblioteca {
 
     public static void mostrarTodosLibros(ArrayList<Libro> libroList) {
         for (int i = 0; i < libroList.size(); i++) {
-
             System.out.println(libroList.get(i).toString() + "\n");
         }
     }
 
     public static void mostrarLibroDisponible(ArrayList<Libro> libroList) {
         ArrayList<Libro> librosdisponibles = new ArrayList<>();
-
         for (int i = 0; i < libroList.size(); i++) {
             if (libroList.get(i).getNumCopiasDisponibles() > 0) {
                 librosdisponibles.add(libroList.get(i));

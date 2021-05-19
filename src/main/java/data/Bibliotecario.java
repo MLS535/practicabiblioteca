@@ -96,7 +96,7 @@ public class Bibliotecario extends Persona {
 
         bibliotecarios.add(bibliotecario);
         personaArrayList.add(bibliotecario);
-        System.out.println(bibliotecario);
+        System.out.println("El usuario que se ha creado es el siguiente: \n" + bibliotecario);
     }
 
 
@@ -219,16 +219,18 @@ public class Bibliotecario extends Persona {
         Scanner nif1 = new Scanner(System.in);
         String nif = nif1.nextLine();
 
-        System.out.println("Introduce el Password que quieres cambiar:");
+        System.out.println("Introduce una nueva contraseña que quieres cambiar:");
         Scanner password1 = new Scanner(System.in);
         String password = password1.nextLine();
-
-        for (int i = 0; i < bibliotecarios.size(); i++) {
+        int i;
+        for (i = 0; i < bibliotecarios.size(); i++) {
             if (bibliotecarios.get(i).getNif().equals(nif)) {
                 bibliotecarios.get(i).setPassword(password);
+                System.out.println("La contraseña se ha cambiado correctamente");
+                System.out.println(bibliotecarios);
             }
-            System.out.println("La contraseña se ha cambiado correctamente");
-        }
+        }if (!bibliotecarios.get(i).getNif().equals(nif))
+            System.out.println("Lo siento ha habido un error");
     }
 
     @Override
