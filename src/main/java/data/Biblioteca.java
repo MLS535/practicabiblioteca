@@ -97,13 +97,16 @@ public class Biblioteca {
             System.out.println(librosdisponibles.get(i).toString() + "\n");
         }
     }
-    //todo comprobar
-   public static void nombrebiblio(String nombreBibi){
-        Biblioteca biblioteca= new Biblioteca();
-        biblioteca.setNombreBiblioteca(nombreBibi);
-        System.out.println(biblioteca);
-    }
 
+    //todo comprobar
+    public static void nombreBiblio() {
+        System.out.println("Por favor introduce el nombre la Biblioteca:");
+        Scanner biblio = new Scanner(System.in);
+        String nombre = biblio.nextLine();
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setNombreBiblioteca(nombre);
+        System.out.println("Bienvenido a la biblioteca " + biblioteca.getNombreBiblioteca());
+    }
 
 
     @Override
