@@ -123,7 +123,7 @@ public class Usuario extends Persona {
         usuarioList.add(usuario);
         usuarios.add(usuario);
         personaArrayList.add(usuario);
-        System.out.println(usuario);
+        System.out.println("El usuario que se ha creado es el siguiente: \n" + usuario);
     }
     //todo ponerlo en el menu
     @Override
@@ -140,8 +140,10 @@ public class Usuario extends Persona {
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getTelefono().equals(telefono)) {
                 usuarios.get(i).setCorreoElectronico(correo);
-            }
-            System.out.println("El correo electrónico se ha cambiado correctamente");
+                System.out.println("El correo electrónico se ha cambiado correctamente");
+            }else
+                System.out.println("Lo siento ha habido un error");
+
         }
     }
 
