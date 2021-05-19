@@ -180,7 +180,6 @@ public class Libro {
     }
     //todo comprobar este metodo y preguntar en clase
     public void agregarLibroCopia(ArrayList<Libro> libroList) {
-        Biblioteca biblioteca= new Biblioteca();
         Scanner isbn = new Scanner(System.in);
         System.out.println("\n Introduce el ISBN de las copias que quiere añadir");
         String leerisbn= isbn.nextLine();
